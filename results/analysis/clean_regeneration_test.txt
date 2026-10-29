@@ -1,0 +1,9 @@
+clean folder: <tempdir>\clean_regen_20261029085753
+exit status: 0
+sitl_vs_matlab.csv: PASS rows 14, text/key columns equal, NaN/Inf masks equal, max relative difference 0
+stack_hover_table.csv: PASS rows 4, text/key columns equal, NaN/Inf masks equal, max relative difference 0
+stack_tracking_table.csv: PASS rows 37, text/key columns equal, NaN/Inf masks equal, max relative difference 0
+increment_sitl.csv: PASS rows 37, text/key columns equal, NaN/Inf masks equal, max relative difference 0
+increment_hover.csv: PASS rows 4, text/key columns equal, NaN/Inf masks equal, max relative difference 0
+budget_performance.csv: PASS rows 15, text/key columns equal, NaN/Inf masks equal, max relative difference 0
+result: PASS (0 of 6 files differ)

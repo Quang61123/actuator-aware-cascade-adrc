@@ -1,0 +1,8 @@
+Rule for the set-point weight b*, declared 2026-10-19 08:09:16 before any b* computation or run.
+Designs: PID-Budget, PID-Budget-S (pidS.mat), PID-E (designs_E.mat). AA designs unchanged (b = 1).
+Per class c, b* = largest value in G_c = ({0,0.05,...,1} U {b_cur}) restricted to [b_cur, 1] such that OS <= 10% and 2% settling ts <= [15 5 2 5] s (xy z phth psi), 400-s unit step.
+Model: PID-Budget and PID-Budget-S on the design model (chan_model, design delays); PID-E on the estimator-stack model (est_stack_tools, 6-ms rate delay).
+Order: phth, z, psi first (independent); then xy on the cascade model with the phth gains including b*_phth.
+If no xy value in G_xy is feasible with b*_phth, b_phth reverts to b_cur and xy is re-evaluated; b_cur itself is feasible by construction of the designs.
+Only b changes; all other gains fixed. Check: Ms, sigma_u, sigma_du (white), cascade increment and (PID-E) estimator-aware increments unchanged to <= 1e-12 relative.
+Runs (MATLAB only): S6 seeds 91001-91030 and S5 seeds 91001-91010, nominal plant (tau 30 ms, delay 5), both b_cur and b*.

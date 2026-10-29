@@ -1,0 +1,42 @@
+===== SITL input mode: EKF =====
+S6 MATLAB J      : AA-Budget < AA-HalfGain < PID-Budget
+S6 SITL J_unq    : PID-Budget < AA-HalfGain < AA-Budget
+S6 SITL J_q      : PID-Budget < AA-HalfGain < AA-Budget
+S6 SITL sd_du rl : PID-Budget < AA-HalfGain < AA-Budget
+
+S6 MATLAB J      : AA-Budget-S < AA-HalfGain-S < PID-Budget-S
+S6 SITL J_unq    : PID-Budget-S < AA-HalfGain-S < AA-Budget-S
+S6 SITL J_q      : PID-Budget-S < AA-HalfGain-S < AA-Budget-S
+S6 SITL sd_du rl : PID-Budget-S < AA-HalfGain-S < AA-Budget-S
+
+hover pred sigma_du : AA-Budget < AA-HalfGain < PID-Budget
+hover MATLAB max    : AA-Budget < AA-HalfGain < PID-Budget
+hover SITL max      : PID-Budget < AA-HalfGain < AA-Budget
+hover SITL J_unq    : PID-Budget < AA-HalfGain < AA-Budget
+
+hover pred sigma_du : AA-Budget-S < AA-HalfGain-S < PID-Budget-S
+hover MATLAB max    : AA-Budget-S < AA-HalfGain-S < PID-Budget-S
+hover SITL max      : PID-Budget-S < AA-HalfGain-S < AA-Budget-S
+hover SITL J_unq    : PID-Budget-S < AA-HalfGain-S < AA-Budget-S
+
+===== SITL input mode: raw =====
+S6 MATLAB J      : AA-Budget < AA-HalfGain < PID-Budget
+S6 SITL J_unq    : AA-Budget < AA-HalfGain < PID-Budget
+S6 SITL J_q      : AA-Budget < AA-HalfGain < PID-Budget
+S6 SITL sd_du rl : AA-Budget < AA-HalfGain < PID-Budget
+
+S6 MATLAB J      : AA-Budget-S < AA-HalfGain-S < PID-Budget-S
+S6 SITL J_unq    : AA-Budget-S < AA-HalfGain-S < PID-Budget-S
+S6 SITL J_q      : AA-Budget-S < AA-HalfGain-S < PID-Budget-S
+S6 SITL sd_du rl : AA-Budget-S < AA-HalfGain-S < PID-Budget-S
+
+hover pred sigma_du : AA-Budget < AA-HalfGain < PID-Budget
+hover MATLAB max    : AA-Budget < AA-HalfGain < PID-Budget
+hover SITL max      : AA-Budget < AA-HalfGain < PID-Budget
+hover SITL J_unq    : AA-Budget < AA-HalfGain < PID-Budget
+
+hover pred sigma_du : AA-Budget-S < AA-HalfGain-S < PID-Budget-S
+hover MATLAB max    : AA-Budget-S < AA-HalfGain-S < PID-Budget-S
+hover SITL max      : AA-Budget-S < AA-HalfGain-S < PID-Budget-S
+hover SITL J_unq    : AA-Budget-S < AA-HalfGain-S < PID-Budget-S
+

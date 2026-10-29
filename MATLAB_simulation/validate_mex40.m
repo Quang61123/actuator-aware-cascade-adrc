@@ -1,0 +1,3 @@
+function validate_mex40()
+if exist('run_quad_stress_mex','file')~=3,warning('sim:NoMEX','Live MEX40 comparison skipped; bundled validation CSV describes the delivered run.');return,end;P=sim_config();D=load(fullfile(P.results,'design_gains.mat'));pv=quad_params();E=make_exo(6,91001,40,D.S.Ts,D.S);nd=5*ones(40000,1);A=table();for c=1:4,co=D.C(c);pc=quad_params([],co.tauhat,co.ndhat);a=run_quad_stress(co.kind,co.G,6,pv,pc,40,D.S.Ts,E,D.S.sig,nd);b=run_quad_stress_mex(co.kind,co.G,6,pv,pc,40,D.S.Ts,E,D.S.sig,nd);err=max(abs(a.x-b.x),[],'all');assert(err<1e-8);A=[A;table(string(co.name),err,'VariableNames',{'Ctrl','MaxStateDifference'})];end;writetable(A,fullfile(P.results,'mex_equivalence.csv'));fprintf('FRESH_MEX40_EQUIVALENCE_PASS\n');
+end

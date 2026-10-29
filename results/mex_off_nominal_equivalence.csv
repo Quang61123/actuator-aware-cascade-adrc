@@ -1,0 +1,4 @@
+Ctrl,Tau_ms,Delay_ms,MaxFiniteStateDifference
+A1-Commanded,30,5,0
+AA-Budget,120,10,0
+AA-HalfGain,120,10,0

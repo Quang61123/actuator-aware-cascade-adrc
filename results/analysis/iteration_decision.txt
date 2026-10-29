@@ -1,0 +1,13 @@
+Redesign-log-refit loop of the estimator-stack designs
+
+Iteration 0 (ids 17 PID-E, 18 AA-Budget-E, 19 AA-HalfGain-E; designed with the estimator-campaign pooled model):
+  hover SITL runs E0H (seeds 96001-96010, 60 s, window 20-60 s) -> refit (fit_noise_models, results in noise_it0/)
+  check (est_design_iteration(0), est_design_iteration0.csv):
+    updated-pooled prediction / measured, roll/pitch increment: 0.964, 0.998, 1.008
+    updated-pooled prediction / measured, yaw increment:        0.998, 1.008, 1.008
+    all constraints of verify_design_stack met with the updated pooled model: yes (est_design_iteration0_verify_<id>.csv)
+  stopping rule (|ratio - 1| <= 10 % and constraints met): MET
+
+Decision: no redesign; the final -E designs are ids 17-19 (iteration 0).
+Phase P1b (E1H) of run_plan.csv is therefore not run. Phase P2 uses EF = [17 18 19];
+the final noise-only hover runs of the -E designs are the E0H runs.

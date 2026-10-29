@@ -1,0 +1,24 @@
+# Google Drive / OS
+desktop.ini
+Thumbs.db
+.DS_Store
+
+# MATLAB
+*.asv
+*.autosave
+*.slxc
+slprj/
+codegen/
+*.mex*.pdb
+octave-workspace
+
+# PX4 SITL work folder (logs, ulogs, builds; see px4sitl_work_dir)
+px4sitl_work/
+*.ulg
+
+# LaTeX / editors
+*.aux
+*.log
+*.synctex.gz
+.vscode/
+.idea/

@@ -1,0 +1,7 @@
+Design,Class,Evaluated,Feasible,Selected
+PID-E,psi,20,15,1
+PID-E,phth+xy,20,3,1
+AA-Budget-E,psi,800,66,1
+AA-Budget-E,phth+xy,144,20,1
+AA-HalfGain-E,psi,800,76,1
+AA-HalfGain-E,phth+xy,144,9,1

@@ -1,0 +1,5 @@
+Ctrl,Samples,MaxPositionDiff,MaxAttitudeDiff,MaxRotorDiff
+PID-Budget,40000,0,0,0
+AA-Budget,40000,0,0,0
+RO-HalfGain,40000,0,0,0
+AA-HalfGain,40000,0,0,0

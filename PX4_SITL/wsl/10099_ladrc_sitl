@@ -1,0 +1,71 @@
+#!/bin/sh
+#
+# @name LADRC quadrotor, external MATLAB plant (Luukkonen '+' quadrotor)
+#
+# @type Quadrotor
+#
+# PX4 multicopter rate/attitude/position controllers are disabled by the
+# PX4 Support Package (rc.mc_apps); the cascade LADRC controller runs in
+# px4_simulink_app and writes actuator_motors (u_i = w_cmd,i / w_max).
+# State estimate: EKF2 with motion-capture-like external vision (position,
+# velocity, yaw) and the simulated IMU; GPS, barometer and magnetometer
+# are not fused.
+
+. ${R}etc/init.d/rc.mc_defaults
+
+param set-default CA_AIRFRAME 0
+param set-default CA_ROTOR_COUNT 4
+param set-default CA_ROTOR0_PX 0.225
+param set-default CA_ROTOR0_PY 0
+param set-default CA_ROTOR1_PX 0
+param set-default CA_ROTOR1_PY 0.225
+param set-default CA_ROTOR2_PX -0.225
+param set-default CA_ROTOR2_PY 0
+param set-default CA_ROTOR3_PX 0
+param set-default CA_ROTOR3_PY -0.225
+param set-default PWM_MAIN_FUNC1 101
+param set-default PWM_MAIN_FUNC2 102
+param set-default PWM_MAIN_FUNC3 103
+param set-default PWM_MAIN_FUNC4 104
+
+# controller and scenario selection (read by px4_simulink_app)
+param set MC_ROLL_P @CTRL@
+param set MC_PITCH_P @SCEN@
+# input source of the controller (0 = EKF2, 1 = raw measurement, vehicle_mocap_odometry)
+param set MC_YAWRATE_FF @SRC@
+
+# 1 kHz IMU pipeline (simulator sends HIL_SENSOR every 1 ms; EKF2 and the
+# lockstep scheduler then progress every 1 ms, as the 1-ms controller)
+param set IMU_INTEG_RATE 1000
+param set IMU_GYRO_RATEMAX 1000
+
+# EKF2: external vision (mocap-like) + IMU
+param set EKF2_MULTI_IMU 0
+param set EKF2_EV_CTRL 15
+param set EKF2_HGT_REF 3
+param set EKF2_GPS_CTRL 0
+param set EKF2_BARO_CTRL 0
+param set EKF2_MAG_TYPE 5
+param set EKF2_RNG_CTRL 0
+param set EKF2_EV_NOISE_MD 1
+param set EKF2_EVP_NOISE 0.01
+param set EKF2_EVV_NOISE 0.02
+param set EKF2_EVA_NOISE 0.05
+param set EKF2_EV_DELAY 5
+param set SYS_HAS_MAG 0
+param set SYS_HAS_GPS 0
+
+# arming / failsafe settings for an RC-less simulation
+param set COM_ARM_WO_GPS 1
+param set COM_RC_IN_MODE 4
+param set NAV_RCL_ACT 0
+param set NAV_DLL_ACT 0
+param set COM_DISARM_PRFLT -1
+param set COM_DISARM_LAND -1
+param set COM_LOW_BAT_ACT 0
+param set CBRK_SUPPLY_CHK 894281
+param set GF_ACTION 0
+
+# log debug_array at every update (default + debug profile; debug_array carries the
+# controller measurement, virtual controls and unquantized rotor commands, logging only)
+param set SDLOG_PROFILE 33
